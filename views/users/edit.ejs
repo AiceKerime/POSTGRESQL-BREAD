@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+
+    <h2>Edit Data</h2>
+
+    <form action="/users" method="post">
+        <div class="input-group">
+            <label for="id" class="input-label">String</label>
+            <input name="id" type="text" id="id" class="input" value="<%= item.id %>" required>
+        </div>
+
+        <div class="input-group">
+            <label for="name" class="input-label">String</label>
+            <input name="string" type="text" id="string" class="input" value="<%= item.string %>" required>
+        </div>
+
+        <div class="input-group">
+            <label for="number" class="input-label">Integer</label>
+            <input name="integer" type="number" id="number" class="input" value="<%= item.integer %>" required>
+        </div>
+
+        <div class="input-group">
+            <label for="float" class="input-label">Float</label>
+            <input name="float" step="0.005" type="number" step="any" id="float" class="input" value="<%= item.float %>"
+                required>
+        </div>
+
+        <div class="input-group">
+            <p>Date</p>
+            <input name="date" type="date" id="date" class="input" value="<%= item.date %>">
+        </div>
+
+        <div class="flex-container">
+            <label class="">
+                <input type="checkbox" aria-label="Checkbox for following text input" />Boolean
+            </label>
+            <div class="space-8">
+                <select class="input">
+                    <option value="" selected disabled>-- Choose Boolean --</option>
+                    <option value=true <%=item.boolean==1 ? 'selected' : '' %>>True</option>
+                    <option value=false <%=item.boolean==0 ? 'selected' : '' %>>False</option>
+                </select>
+            </div>
+        </div>
+        <br>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="/users" class="btn btn-danger">Back</a>
+        </div>
+    </form>
+
+    <%- include('../partials/footer') %>
