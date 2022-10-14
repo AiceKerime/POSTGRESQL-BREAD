@@ -1,52 +1,53 @@
 <%- include('../partials/header') %>
 
-    <h2>Edit Data</h2>
+    <div class="container">
+        <h2>Edit Data</h2>
 
-    <form action="/users" method="post">
-        <div class="input-group">
-            <label for="id" class="input-label">String</label>
-            <input name="id" type="text" id="id" class="input" value="<%= item.id %>" required>
-        </div>
-
-        <div class="input-group">
-            <label for="name" class="input-label">String</label>
-            <input name="string" type="text" id="string" class="input" value="<%= item.string %>" required>
-        </div>
-
-        <div class="input-group">
-            <label for="number" class="input-label">Integer</label>
-            <input name="integer" type="number" id="number" class="input" value="<%= item.integer %>" required>
-        </div>
-
-        <div class="input-group">
-            <label for="float" class="input-label">Float</label>
-            <input name="float" step="0.005" type="number" step="any" id="float" class="input" value="<%= item.float %>"
-                required>
-        </div>
-
-        <div class="input-group">
-            <p>Date</p>
-            <input name="date" type="date" id="date" class="input" value="<%= item.date %>">
-        </div>
-
-        <div class="flex-container">
-            <label class="">
-                <input type="checkbox" aria-label="Checkbox for following text input" />Boolean
-            </label>
-            <div class="space-8">
-                <select class="input">
-                    <option value="" selected disabled>-- Choose Boolean --</option>
-                    <option value=true <%=item.boolean==1 ? 'selected' : '' %>>True</option>
-                    <option value=false <%=item.boolean==0 ? 'selected' : '' %>>False</option>
-                </select>
+        <form action="/users" method="post">
+            <div class="py-2">
+                <label for="id" class="form-label">String</label>
+                <input name="id" type="text" id="id" class="form-control" value="<%= item.id %>" required>
             </div>
-        </div>
-        <br>
 
-        <div>
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a href="/users" class="btn btn-danger">Back</a>
-        </div>
-    </form>
+            <div class="py-2">
+                <label for="name" class="form-label">String</label>
+                <input name="string" type="text" id="string" class="form-control" value="<%= item.string %>" required>
+            </div>
+
+            <div class="py-2">
+                <label for="number" class="form-label">Integer</label>
+                <input name="integer" type="number" id="number" class="form-control" value="<%= item.integer %>"
+                    required>
+            </div>
+
+            <div class="py-2">
+                <label for="float" class="form-label">Float</label>
+                <input name="float" step="0.005" type="number" step="any" id="float" class="form-control"
+                    value="<%= item.float %>" required>
+            </div>
+
+            <div class="py-2">
+                <label for="date" class="form-label">Date</label>
+                <input name="date" type="date" id="date" class="form-control" value="<%= item.date %>">
+            </div>
+
+            <div class="py-2">
+                <label for="boolean" class="form-label">Boolean</label>
+                <div class="space-8">
+                    <select name="boolean" class="form-control">
+                        <option value="" selected disabled>-- Choose Boolean --</option>
+                        <option value=true <%=item.boolean==1 ? 'selected' : '' %>>True</option>
+                        <option value=false <%=item.boolean==0 ? 'selected' : '' %>>False</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="/users" class="btn btn-danger">Back</a>
+            </div>
+        </form>
+    </div>
 
     <%- include('../partials/footer') %>

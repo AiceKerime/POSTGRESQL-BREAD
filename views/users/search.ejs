@@ -1,12 +1,11 @@
 <h2>Filter</h2>
 
-<form>
+<form action="" method="get">
+    <input type="hidden" name="page" value="1">
     <div>
-        <div class="flex-container">
-            <input type="checkbox" aria-label="Checkbox for following text input" />
-            <label class="col-sm-2 col-form-label">
-                ID
-            </label>
+        <div class="py-2 align-items-center">
+            <input type="checkbox" aria-label="Checkbox for following text input" <%=query.idCheck ? 'checked' : '' %>/>
+            <label class="col-sm-2 form-label">ID</label>
             <div class="space-8">
                 <input id="Id" class="input-search" type="text" name="id" placeholder="Id" />
             </div>
@@ -15,11 +14,10 @@
     <br>
 
     <div>
-        <div class="flex-container">
-            <input type="checkbox" aria-label="Checkbox for following text input" />
-            <label class="col-sm-2 col-form-label">
-                String
-            </label>
+        <div class="py-2 align-items-center">
+            <input type="checkbox" aria-label="Checkbox for following text input" <%=query.stringCheck ? 'checked' : ''
+                %>/>
+            <label class="col-sm-2 form-label">String</label>
             <div class="space-8">
                 <input class="input-search" type="text" name="string" placeholder="String" />
             </div>
@@ -28,11 +26,10 @@
     <br>
 
     <div>
-        <div class="flex-container">
-            <input type="checkbox" aria-label="Checkbox for following text input" />
-            <label class="col-sm-2 col-form-label">
-                Integer
-            </label>
+        <div class="py-2">
+            <input type="checkbox" aria-label="Checkbox for following text input" <%=query.integerCheck ? 'checked' : ''
+                %>/>
+            <label class="col-sm-2 form-label">Integer</label>
             <div class="space-8">
                 <input class="input-search" type="number" name="integer" placeholder="Integer" />
             </div>
@@ -41,11 +38,10 @@
     <br>
 
     <div>
-        <div class="flex-container">
-            <input type="checkbox" aria-label="Checkbox for following text input" />
-            <label class="col-sm-2 col-form-label">
-                Float
-            </label>
+        <div class="py-2 align-items-center">
+            <input type="checkbox" aria-label="Checkbox for following text input" <%=query.floatCheck ? 'checked' : ''
+                %>/>
+            <label class="col-sm-2 form-label">Float</label>
             <div class="space-8">
                 <input class="input-search" step="0.005" type="text" name="integer" placeholder="Float" />
             </div>
@@ -54,28 +50,29 @@
     <br>
 
     <div>
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center py-2">
             <div>
-                <input type="checkbox" aria-label="Checkbox for following text input" />
-                <label class="me-5">
-                    Date
-                </label>
+                <input type="checkbox" aria-label="Checkbox for following text input" <%=query.dateCheck ? 'checked'
+                    : '' %>/>
+                <label class="me-5">Date</label>
             </div>
 
             <div class="space-8">
-                <input class="input-search date-input" type="date" name="startDate" placeholder="Date" /> <br>to<br>
-                <input class="input-search date-input" type="date" name="endDate" placeholder="Date" />
+                <input class="form-control" type="date" name="startDate" placeholder="Date" />
+                <br>
+                <p class="to">to</p>
+                <br>
+                <input class="form-control" type="date" name="endDate" placeholder="Date" />
             </div>
         </div>
     </div>
     <br>
 
-    <div class="flex-container">
-        <input type="checkbox" aria-label="Checkbox for following text input" />
-        <label class="">
-            Boolean
-        </label>
-        <div class="space-8">
+    <div class="py-2">
+        <input type="checkbox" aria-label="Checkbox for following text input" <%=query.booleanCheck ? 'checked' : ''
+            %>/>
+        <label class="">Boolean</label>
+        <div class="py-1">
             <select class="input-search">
                 <option value="" selected disabled>-- Choose Boolean --</option>
                 <option value="true">True</option>
