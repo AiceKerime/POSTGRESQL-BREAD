@@ -24,6 +24,7 @@ module.exports = function (db) {
   router.get('/edit/:id', async (req, res) => {
     try {
       const { id } = req.params
+
       const { rows: data } = await db.query('SELECT * FROM public."dataBread" WHERE id = $1', [id])
 
       res.render('users/edit', { item: data[0] })
@@ -35,14 +36,13 @@ module.exports = function (db) {
 
   router.get('/delete/:id', async (req, res) => {
     try {
-      console.log(req.body)
-      const { id } = req.params.id
+      const { id } = req.params
 
-      const { rows: data } = await db.query('DELETE FROM public."dataBread" WHERE id = $1', [id])
+      await db.query('DELETE FROM public."dataBread" WHERE id = $1', [id])
 
       res.redirect('/users')
     } catch (err) {
-      console.log(err)
+      res.send(err)
     }
   })
 
@@ -62,10 +62,9 @@ module.exports = function (db) {
 
   router.post('/edit/:id', async (req, res) => {
     try {
-      console.log(req.body)
       const { string, integer, float, date, boolean } = req.body
 
-      const { rows: data } = await db.query('UPDATE FROM public."dataBread" SET string = $1, integer = $2, float = $3, date = $4, boolean = $5 WHERE id = $1', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
+      await db.query('UPDATE public."dataBread" SET string = $1, "integer"= $1, "float" = $1, date = $1, "boolean" = $1 WHERE id = $1;', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
 
       res.redirect('/users')
     } catch (err) {

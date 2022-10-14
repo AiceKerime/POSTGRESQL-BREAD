@@ -3,7 +3,7 @@
     <div class="container">
         <h2>Edit Data</h2>
 
-        <form action="/users/edit" method="post">
+        <form action="" method="post">
             <div class="py-2">
                 <label for="id" class="form-label">Id</label>
                 <input name="id" type="text" id="id" class="form-control" value="<%= item.id %>" disabled>
@@ -41,12 +41,16 @@
                     </select>
                 </div>
             </div>
-            <br>
-            <div>
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a href="/users" class="btn btn-danger">Back</a>
-            </div>
         </form>
+        <br>
+
+        <div class="d-flex ">
+            <form action="/users/edit" method="post">
+                <button type="submit" class="btn btn-primary mr-2">Update</button>
+            </form>
+
+            <a href="/users" class="btn btn-danger">Back</a>
+        </div>
     </div>
 
     <%- include('../partials/footer') %>
