@@ -3,10 +3,10 @@
     <div class="container">
         <h2>Edit Data</h2>
 
-        <form action="/users" method="post">
+        <form action="/users/edit" method="post">
             <div class="py-2">
-                <label for="id" class="form-label">String</label>
-                <input name="id" type="text" id="id" class="form-control" value="<%= item.id %>" required>
+                <label for="id" class="form-label">Id</label>
+                <input name="id" type="text" id="id" class="form-control" value="<%= item.id %>" disabled>
             </div>
 
             <div class="py-2">
@@ -42,7 +42,6 @@
                 </div>
             </div>
             <br>
-
             <div>
                 <button type="submit" class="btn btn-primary">Update</button>
                 <a href="/users" class="btn btn-danger">Back</a>

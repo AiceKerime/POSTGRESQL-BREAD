@@ -21,10 +21,6 @@ module.exports = function (db) {
     res.render('users/add')
   })
 
-  router.get('/edit', (req, res) => {
-    res.render('users/edit')
-  })
-
   router.get('/edit/:id', async (req, res) => {
     try {
       const { id } = req.params
@@ -39,11 +35,12 @@ module.exports = function (db) {
 
   router.get('/delete/:id', async (req, res) => {
     try {
+      console.log(req.body)
       const { id } = req.params.id
 
       const { rows: data } = await db.query('DELETE FROM public."dataBread" WHERE id = $1', [id])
 
-      res.redirect('/users', { item: data[0] })
+      res.redirect('/users')
     } catch (err) {
       console.log(err)
     }
@@ -54,21 +51,25 @@ module.exports = function (db) {
     try {
       const { string, integer, float, date, boolean } = req.body
 
-      const { rows: data } = await db.query('INSERT INTO public."dataBread" (string, integer, float, date, boolean) VALUES ($1, $2, $3, $4, $5)', [string, integer, float, date, boolean])
+      const { rows: data } = await db.query('INSERT INTO public."dataBread" (string, integer, float, date, boolean) VALUES ($1, $2, $3, $4, $5)', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
 
-      res.redirect('/users', { data })
+      res.redirect('/users')
     } catch (err) {
       console.log(err)
+      res.send(err)
     }
   })
 
   router.post('/edit/:id', async (req, res) => {
     try {
+      console.log(req.body)
       const { string, integer, float, date, boolean } = req.body
 
-      const { rows: data } = await db.query('UPDATE FROM public."dataBread" SET string = $1, integer = $2, float = $3, date = $4, boolean = $5 WHERE id = $1', [string, integer, float, date, boolean])
-    } catch (err) {
+      const { rows: data } = await db.query('UPDATE FROM public."dataBread" SET string = $1, integer = $2, float = $3, date = $4, boolean = $5 WHERE id = $1', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
 
+      res.redirect('/users')
+    } catch (err) {
+      res.send(err)
     }
   })
 
