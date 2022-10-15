@@ -49,9 +49,10 @@ module.exports = function (db) {
   // POST
   router.post('/add', async (req, res) => {
     try {
+      console.log(req.body)
       const { string, integer, float, date, boolean } = req.body
 
-      const { rows: data } = await db.query('INSERT INTO public."dataBread" (string, integer, float, date, boolean) VALUES ($1, $2, $3, $4, $5)', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
+      await db.query('INSERT INTO public."dataBread" (string, "integer", "float", date, "boolean") VALUES ($1, $2, $3, $4, $5)', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
 
       res.redirect('/users')
     } catch (err) {
@@ -62,9 +63,10 @@ module.exports = function (db) {
 
   router.post('/edit/:id', async (req, res) => {
     try {
+      const { id } = req.params
       const { string, integer, float, date, boolean } = req.body
 
-      await db.query('UPDATE public."dataBread" SET string = $1, "integer"= $1, "float" = $1, date = $1, "boolean" = $1 WHERE id = $1;', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
+      await db.query('UPDATE public."dataBread" SET string = $1, "integer" = $2, "float" = $3, date = $4, "boolean" = $5 WHERE id = $6', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean), id])
 
       res.redirect('/users')
     } catch (err) {

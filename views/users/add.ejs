@@ -3,7 +3,7 @@
     <div class="container">
         <h2>Add data</h2>
 
-        <form id="str" action="/users/add" method="post">
+        <form action="/users/add" method="post">
             <div class="py-2">
                 <label for="string" class="form-label">String</label>
                 <input name="string" type="text" id="string" class="form-control" required>
@@ -36,10 +36,10 @@
                     </select>
                 </div>
             </div>
+            <br>
 
             <div>
                 <form action="" method="post">
-                    <br>
                     <button type="submit" class="btn btn-primary" id="SaveButton">Save</button>
                 </form>
                 <a href="/users" class="btn btn-danger" id="BackButton">Back</a>

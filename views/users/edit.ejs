@@ -10,47 +10,47 @@
             </div>
 
             <div class="py-2">
-                <label for="name" class="form-label">String</label>
+                <label for="string" class="form-label">String</label>
                 <input name="string" type="text" id="string" class="form-control" value="<%= item.string %>" required>
             </div>
 
             <div class="py-2">
-                <label for="number" class="form-label">Integer</label>
-                <input name="integer" type="number" id="number" class="form-control" value="<%= item.integer %>"
+                <label for="integer" class="form-label">Integer</label>
+                <input name="integer" type="number" id="integer" class="form-control" value="<%= item.integer %>"
                     required>
             </div>
 
             <div class="py-2">
                 <label for="float" class="form-label">Float</label>
-                <input name="float" step="0.005" type="number" step="any" id="float" class="form-control"
+                <input name="float" step="0.005" type="number" step="0.005" id="float" class="form-control"
                     value="<%= item.float %>" required>
             </div>
 
             <div class="py-2">
                 <label for="date" class="form-label">Date</label>
-                <input name="date" type="date" id="date" class="form-control" value="<%= item.date %>">
+                <input name="date" type="date" id="date" class="form-control" value="<%= item. date %>">
             </div>
 
             <div class="py-2">
                 <label for="boolean" class="form-label">Boolean</label>
                 <div class="space-8">
-                    <select name="boolean" class="form-control">
+                    <select name="boolean" class="form-control" required>
                         <option value="" selected disabled>-- Choose Boolean --</option>
                         <option value=true <%=item.boolean==1 ? 'selected' : '' %>>True</option>
                         <option value=false <%=item.boolean==0 ? 'selected' : '' %>>False</option>
                     </select>
                 </div>
             </div>
+            <br>
+
+            <div class="d-flex">
+                <form action="/users/edit" method="post">
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                </form>
+
+                <a href="/users" class="btn btn-danger">Back</a>
+            </div>
         </form>
-        <br>
-
-        <div class="d-flex ">
-            <form action="/users/edit" method="post">
-                <button type="submit" class="btn btn-primary mr-2">Update</button>
-            </form>
-
-            <a href="/users" class="btn btn-danger">Back</a>
-        </div>
     </div>
 
     <%- include('../partials/footer') %>
