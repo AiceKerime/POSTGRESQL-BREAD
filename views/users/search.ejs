@@ -7,31 +7,32 @@
             <input type="checkbox" aria-label="Checkbox for following text input" <%=query.idCheck ? 'checked' : '' %>>
             <label class="col-sm-2 form-label">ID</label>
             <div class="space-8">
-                <input id="id" class="form-control" type="number" name="id" placeholder="Id">
+                <input id="id" class="form-control" type="number" name="id" placeholder="Id" value="<%= query.id %>">
             </div>
         </div>
     </div>
     <br>
 
     <div>
-        <div class="py-2 align-items-center">
+        <div class=" py-2 align-items-center">
             <input type="checkbox" aria-label="Checkbox for following text input" <%=query.stringCheck ? 'checked' : ''
                 %>>
             <label class="col-sm-2 form-label">String</label>
             <div class="space-8">
-                <input class="form-control" type="text" name="string" placeholder="String">
+                <input class="form-control" type="text" name="string" placeholder="String" value="<%= query.string %>">
             </div>
         </div>
     </div>
     <br>
 
     <div>
-        <div class="py-2">
+        <div class=" py-2">
             <input type="checkbox" aria-label="Checkbox for following text input" <%=query.integerCheck ? 'checked' : ''
                 %>>
             <label class="col-sm-2 form-label">Integer</label>
             <div>
-                <input class="form-control" type="number" name="integer" placeholder="Integer">
+                <input class="form-control" type="number" name="integer" placeholder="Integer"
+                    value="<%= query.integer %>">
             </div>
         </div>
     </div>
@@ -43,7 +44,8 @@
                 %>>
             <label class="col-sm-2 form-label">Float</label>
             <div class="space-8">
-                <input class="form-control" step="0.005" type="number" name="integer" placeholder="Float">
+                <input class="form-control" step="0.005" type="number" name="integer" placeholder="Float"
+                    value="<%= query.float %>">
             </div>
         </div>
     </div>
@@ -58,9 +60,9 @@
             </div>
 
             <div>
-                <input class="form-control" type="date" name="startDate">
+                <input class="form-control" type="date" name="startDate" value="<%= query.startDate %>">
                 <p>to</p>
-                <input class="form-control" type="date" name="endDate">
+                <input class="form-control" type="date" name="endDate" value="<%= query.endDate %>">
             </div>
         </div>
     </div>
@@ -70,17 +72,17 @@
         <input type="checkbox" aria-label="Checkbox for following text input" <%=query.booleanCheck ? 'checked' : '' %>>
         <label class="">Boolean</label>
         <div class="py-2">
-            <select class="form-control">
+            <select class="form-control"" name=" boolean">
                 <option value="" selected disabled>-- Choose Boolean --</option>
-                <option value="true">True</option>
-                <option value="false">False</option>
+                <option value=1 <%=query.boolean==1 ? 'selected' : '' %> name="boolean">True</option>
+                <option value=0 <%=query.boolean==1 ? 'selected' : '' %> name="boolean">False</option>
             </select>
         </div>
     </div>
     <br>
 
     <div>
-        <button id="search-button" class="btn btn-primary">Search</button>
+        <button id=" search-button" class="btn btn-primary">Search</button>
         <a href="/users" type="reset" class="btn btn-danger" id="reset-button">Reset</a>
     </div>
     <br>
