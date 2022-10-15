@@ -27,7 +27,7 @@ module.exports = function (db) {
 
       const { rows: data } = await db.query('SELECT * FROM public."dataBread" WHERE id = $1', [id])
 
-      res.render('users/edit', { item: data[0] })
+      res.render('users/edit', { item: data[0], moment })
 
     } catch (err) {
       console.log(err)
