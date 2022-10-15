@@ -28,7 +28,8 @@
 
             <div class="py-2">
                 <label for="date" class="form-label">Date</label>
-                <input name="date" type="date" id="date" class="form-control" value="<%= item.date %>">
+                <input name="date" type="date" id="date" class="form-control"
+                    value="<%= moment(item.date).format('YYYY-MM-DD') %>">
             </div>
 
             <div class="py-2">

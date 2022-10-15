@@ -27,8 +27,8 @@ module.exports = function (db) {
 
       const { rows: data } = await db.query('SELECT * FROM public."dataBread" WHERE id = $1', [id])
 
-      res.render('users/edit', { item: data[0], moment })
 
+      res.render('users/edit', { item: data[0], moment })
     } catch (err) {
       console.log(err)
     }
@@ -52,7 +52,11 @@ module.exports = function (db) {
       console.log(req.body)
       const { string, integer, float, date, boolean } = req.body
 
-      await db.query('INSERT INTO public."dataBread" (string, "integer", "float", date, "boolean") VALUES ($1, $2, $3, $4, $5)', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
+      if (date) {
+        await db.query('INSERT INTO public."dataBread" (string, "integer", "float", date, "boolean") VALUES ($1, $2, $3, $4, $5)', [string, parseInt(integer), parseFloat(float), date, JSON.parse(boolean)])
+      } else {
+        await db.query('INSERT INTO public."dataBread" (string, "integer", "float" ,"boolean") VALUES ($1, $2, $3, $4)', [string, parseInt(integer), parseFloat(float), JSON.parse(boolean)])
+      }
 
       res.redirect('/users')
     } catch (err) {
