@@ -17,6 +17,7 @@ module.exports = function (db) {
 
 
         const filter = `&idCheck=${req.query.idCheck}&id=${req.query.id}&stringCheck=${req.query.stringCheck}&string=${req.query.string}&integerCheck=${req.query.integerCheck}&integer=${req.query.integer}&floatCheck=${req.query.floatCheck}&float=${req.query.float}&dateCheck=${req.query.dateCheck}&startDate=${req.query.startDate}&endDate=${req.query.endDate}&booleanCheck=${req.query.booleanCheck}&boolean=${req.query.boolean}`
+        console.log(filter)
 
 
         var sortBy = req.query.sortBy == undefined ? `id` : req.query.sortBy;
@@ -28,17 +29,17 @@ module.exports = function (db) {
         }
 
         if (req.query.string && req.query.stringCheck == 'on') {
-            position.push(`string ilike '%' || $${count++} || '%'`);
+            position.push(`string like '%' || $${count++} || '%'`);
             values.push(req.query.string);
         }
 
         if (req.query.integer && req.query.integerCheck == 'on') {
-            position.push(`integer ilike '%' || $${count++} || '%'`)
+            position.push(`integer like '%' || $${count++} || '%'`)
             values.push(req.query.integer);
         }
 
         if (req.query.float && req.query.floatCheck == 'on') {
-            position.push(`float ilike '%' || $${count++} || '%'`)
+            position.push(`float like '%' || $${count++} || '%'`)
             values.push(req.query.float);
         }
 
@@ -73,8 +74,6 @@ module.exports = function (db) {
                 console.error(err);
             }
             const pages = Math.ceil(data.rows[0].total / limit)
-            console.log(data.rows)
-
 
             sql = 'SELECT * FROM public."dataBread"'
             if (position.length > 0) {
@@ -87,6 +86,7 @@ module.exports = function (db) {
                 if (err) {
                     console.error(err);
                 }
+                console.log()
                 res.render('users/list', { data: data.rows, pages, page, query: req.query, moment, url, filter, sortBy, sortMode })
             })
         })

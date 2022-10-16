@@ -74,10 +74,10 @@
             <%=query.booleanCheck=='on' ? 'checked' : '' %>>
         <label class="">Boolean</label>
         <div class="py-2">
-            <select class="form-control"" name=" boolean">
+            <select class="form-control" name="boolean">
                 <option value="" selected disabled>-- Choose Boolean --</option>
-                <option value=1 <%=query.boolean==1 ? 'selected' : '' %> name="boolean">True</option>
-                <option value=0 <%=query.boolean==0 ? 'selected' : '' %> name="boolean">False</option>
+                <option value=true <%=query.boolean==1 ? 'selected' : '' %> name="boolean">True</option>
+                <option value=false <%=query.boolean==0 ? 'selected' : '' %> name="boolean">False</option>
             </select>
         </div>
     </div>
