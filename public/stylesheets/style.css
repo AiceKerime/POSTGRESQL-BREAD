@@ -14,3 +14,30 @@ a {
 .mr-2 {
   margin-right: 1rem;
 }
+
+.pagination {
+  background: #94a3b8;
+  border-radius: 0.6rem;
+  display: inline-block;
+  border: 2px solid #000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.pagination a {
+  color: #CBD5E1;
+  float: left;
+  padding: 8px 14px;
+  text-decoration: none;
+}
+
+.pagination li.active {
+  background: #475569;
+  color: #f5f5f5;
+  border-radius: 0.5rem;
+}
+
+.pagination a:hover:not(.active) {
+  background: #3c6cae;
+  color: #f5f5f5;
+  border-radius: 0.5rem;
+}

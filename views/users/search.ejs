@@ -4,7 +4,8 @@
     <input type="hidden" name="page" value="1">
     <div>
         <div class="py-2 align-items-center">
-            <input type="checkbox" aria-label="Checkbox for following text input" <%=query.idCheck ? 'checked' : '' %>>
+            <input type="checkbox" name="idCheck" aria-label="Checkbox for following text input" <%=query.idCheck=='on'
+                ? 'checked' : '' %>>
             <label class="col-sm-2 form-label">ID</label>
             <div class="space-8">
                 <input id="id" class="form-control" type="number" name="id" placeholder="Id" value="<%= query.id %>">
@@ -15,8 +16,8 @@
 
     <div>
         <div class=" py-2 align-items-center">
-            <input type="checkbox" aria-label="Checkbox for following text input" <%=query.stringCheck ? 'checked' : ''
-                %>>
+            <input type="checkbox" name="stringCheck" aria-label="Checkbox for following text input"
+                <%=query.stringCheck=='on' ? 'checked' : '' %>>
             <label class="col-sm-2 form-label">String</label>
             <div class="space-8">
                 <input class="form-control" type="text" name="string" placeholder="String" value="<%= query.string %>">
@@ -27,8 +28,8 @@
 
     <div>
         <div class=" py-2">
-            <input type="checkbox" aria-label="Checkbox for following text input" <%=query.integerCheck ? 'checked' : ''
-                %>>
+            <input type="checkbox" name="integerCheck" aria-label="Checkbox for following text input"
+                <%=query.integerCheck=='on' ? 'checked' : '' %>>
             <label class="col-sm-2 form-label">Integer</label>
             <div>
                 <input class="form-control" type="number" name="integer" placeholder="Integer"
@@ -40,11 +41,11 @@
 
     <div>
         <div class="py-2 align-items-center">
-            <input type="checkbox" aria-label="Checkbox for following text input" <%=query.floatCheck ? 'checked' : ''
-                %>>
+            <input type="checkbox" name="floatCheck" aria-label="Checkbox for following text input"
+                <%=query.floatCheck=='on' ? 'checked' : '' %>>
             <label class="col-sm-2 form-label">Float</label>
             <div class="space-8">
-                <input class="form-control" step="0.005" type="number" name="integer" placeholder="Float"
+                <input class="form-control" step="0.005" type="number" name="float" placeholder="Float"
                     value="<%= query.float %>">
             </div>
         </div>
@@ -54,8 +55,8 @@
     <div>
         <div class="py-2">
             <div>
-                <input type="checkbox" aria-label="Checkbox for following text input" <%=query.dateCheck ? 'checked'
-                    : '' %>>
+                <input type="checkbox" name="dateCheck" label="Checkbox for following text input"
+                    <%=query.dateCheck=='on' ? 'checked' : '' %>>
                 <label class="me-5">Date</label>
             </div>
 
@@ -69,21 +70,23 @@
     <br>
 
     <div class="py-2">
-        <input type="checkbox" aria-label="Checkbox for following text input" <%=query.booleanCheck ? 'checked' : '' %>>
+        <input type="checkbox" name="booleanCheck" aria-label="Checkbox for following text input"
+            <%=query.booleanCheck=='on' ? 'checked' : '' %>>
         <label class="">Boolean</label>
         <div class="py-2">
             <select class="form-control"" name=" boolean">
                 <option value="" selected disabled>-- Choose Boolean --</option>
-                <option value=1 <%=query.boolean==1 ? 'selected' : '' %> name="boolean">True</option>
-                <option value=0 <%=query.boolean==1 ? 'selected' : '' %> name="boolean">False</option>
+                <option value=true <%=query.boolean==true ? 'selected' : '' %> name="boolean">True</option>
+                <option value=false <%=query.boolean==false ? 'selected' : '' %> name="boolean">False</option>
             </select>
         </div>
     </div>
     <br>
 
+
     <div>
-        <button id=" search-button" class="btn btn-primary">Search</button>
-        <a href="/users" type="reset" class="btn btn-danger" id="reset-button">Reset</a>
+        <button type="submit" id=" search-button" class="btn btn-primary">Search</button>
+        <a href="/" type="reset" class="btn btn-danger" id="reset-button">Reset</a>
     </div>
     <br>
     <br>
