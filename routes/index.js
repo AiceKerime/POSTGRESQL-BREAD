@@ -29,17 +29,17 @@ module.exports = function (db) {
         }
 
         if (req.query.string && req.query.stringCheck == 'on') {
-            position.push(`string like '%' || $${count++} || '%'`);
+            position.push(`string ilike '%' || $${count++} || '%'`);
             values.push(req.query.string);
         }
 
         if (req.query.integer && req.query.integerCheck == 'on') {
-            position.push(`integer like '%' || $${count++} || '%'`)
+            position.push(`integer = $${count++}`)
             values.push(req.query.integer);
         }
 
         if (req.query.float && req.query.floatCheck == 'on') {
-            position.push(`float like '%' || $${count++} || '%'`)
+            position.push(`float = $${count++}`)
             values.push(req.query.float);
         }
 
